@@ -20,12 +20,12 @@ class MarkovMachine {
     for (let i = 1; i <= words.length; i++) {
       let prevWord = words[i - 1];
       let word = words[i];
-        
+
       if (i === words.length) {
         if (chains.has(prevWord)) {
           chains.get(prevWord).push(null);
         } else {
-          chains.set(prevWord, [null])
+          chains.set(prevWord, [null]);
         }
       } else if (chains.has(prevWord)) {
         chains.get(prevWord).push(word);
@@ -40,22 +40,28 @@ class MarkovMachine {
 
   getText(numWords = 100) {
     // this.chains is Map
-    wordsArr = this.chains.keys();
+    let wordsArr = [...this.chains.keys()];
     let text = [];
 
-    let randomWord = wordsArr[randomIdx(wordsArr.length)];
+    let randomWord = this.choice(wordsArr);
 
     while (text.length < numWords && randomWord !== null) {
       text.push(randomWord);
-      randomWords = this.chains.get(randomWord); // array of possible word values from randomWord key
+      let randomWords = this.chains.get(randomWord); // array of possible word values from randomWord key
 
-      randomWord = randomWords[randomIdx(randomWords.length)]; // get random word value from array
+      randomWord = this.choice(randomWords); // get random word value from array
     }
-    return text.join(' ');
+
+    return text.join(" ");
   }
 
-  static randomIdx(length) {
-    return Math.floor(Math.random() * length);
+  choice(arr) {
+    // console.log(arr);
+    let word = arr[Math.floor(Math.random() * arr.length)];
+    return word;
   }
 }
 
+module.exports = {
+  MarkovMachine,
+};
