@@ -33,21 +33,29 @@ class MarkovMachine {
         chains.set(prevWord, [word]);
       }
     }
-    console.log(chains)
-    // this.chains = chains;
-    // return chains;
+    this.chains = chains;
   }
 
   /** return random text from chains */
 
   getText(numWords = 100) {
-    // MORE CODE HERE
+    // this.chains is Map
+    wordsArr = this.chains.keys();
+    let text = [];
+
+    let randomWord = wordsArr[randomIdx(wordsArr.length)];
+
+    while (text.length < numWords && randomWord !== null) {
+      text.push(randomWord);
+      randomWords = this.chains.get(randomWord); // array of possible word values from randomWord key
+
+      randomWord = randomWords[randomIdx(randomWords.length)]; // get random word value from array
+    }
+    return text.join(' ');
+  }
+
+  static randomIdx(length) {
+    return Math.floor(Math.random() * length);
   }
 }
 
-// [the, cat, yes, hat, dif, the]
-
-// if hat in obj {
-// obj[hat].push(dif)
-// else
-// obj[yes] = [hat]
