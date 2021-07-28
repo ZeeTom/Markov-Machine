@@ -23,4 +23,6 @@ describe("Tests MarkovMachine methods", function () {
     let text = ted.getText();
     expect(text).toEqual(ted.text);
   })
+
+  // test that a values array's last index has a value of null
 });
