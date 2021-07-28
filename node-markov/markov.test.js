@@ -1,8 +1,14 @@
+"use strict"
+
+/** Tests for Markov Machine Class */
+
 const { MarkovMachine } = require("./markov.js");
 
 describe("Tests MarkovMachine methods", function () {
+  let ted;
+
   beforeEach(function () {
-    let ted = new MarkovMachine("the cat in the hat");
+    ted = new MarkovMachine("the cat in the hat");
   });
 
   afterEach(function () {
@@ -12,4 +18,9 @@ describe("Tests MarkovMachine methods", function () {
   test("Instance of Markov machine returns true", function () {
     expect(ted instanceof MarkovMachine).toEqual(true);
   });
+
+  test("random texts", function () {
+    let text = ted.getText();
+    expect(text).toEqual(ted.text);
+  })
 });

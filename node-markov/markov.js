@@ -1,3 +1,5 @@
+"use strict"
+
 /** Textual markov chain generator */
 
 class MarkovMachine {
@@ -51,6 +53,7 @@ class MarkovMachine {
 
       randomWord = this.choice(randomWords); // get random word value from array
     }
+    this.text = text.join(" ");
 
     return text.join(" ");
   }
