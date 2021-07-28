@@ -21,8 +21,12 @@ describe("Tests MarkovMachine methods", function () {
 
   test("random texts", function () {
     let text = ted.getText();
-    expect(text).toEqual(ted.text);
+    expect(text).toEqual(ted.texts);
   })
+
+  // look for output .contains() two-word combos
 
   // test that a values array's last index has a value of null
 });
+
+// learn about mocking 

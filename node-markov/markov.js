@@ -43,19 +43,21 @@ class MarkovMachine {
   getText(numWords = 100) {
     // this.chains is Map
     let wordsArr = [...this.chains.keys()];
-    let text = [];
+    let texts = [];
 
     let randomWord = this.choice(wordsArr);
+    // possibleVocab, think of a better variable name
 
-    while (text.length < numWords && randomWord !== null) {
-      text.push(randomWord);
+    while (texts.length < numWords && randomWord !== null) {
+      texts.push(randomWord);
       let randomWords = this.chains.get(randomWord); // array of possible word values from randomWord key
 
       randomWord = this.choice(randomWords); // get random word value from array
     }
-    this.text = text.join(" ");
+    this.texts = texts.join(" ");
+    // not a fact about the machine
 
-    return text.join(" ");
+    return texts.join(" ");
   }
 
   choice(arr) {
